@@ -1,0 +1,41 @@
+{% extends 'base.html' %} 
+
+{% block title %}
+    Display Page
+{% endblock %}
+
+{% block head %} 
+    
+    <script>
+        alert("Howzz That!!")
+    </script>
+
+    <style>
+        .bold{
+            font-weight:900;
+        }
+    </style>
+
+{% endblock %} 
+
+{% block body %}
+
+    {% include 'HelloWorld/navbar.html' %}
+
+    <div class="container">
+        <h1> Hello World Application </h1>
+
+        <ul class="collection">
+            {% for mentor in mentors %} 
+                <li class="{% cycle 'bold' '' %} collection-item"> {{mentor}} </li>
+            {% endfor %}
+        </ul>
+
+        {% if developer %} 
+            <p> Developed By: {{ developer }} </p>
+        {% endif %}
+    </div>
+
+
+
+{% endblock %} 
