@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    <h1> Name: {{ author.name }} </h1>
+    <h4>Articles Written:</h4>
+    <ul>
+        <!-- Reverse Relational Mapper Object -->
+        {% for article in author.article_set.all %}
+        <li>
+            <a href="{% url 'get-article' article.pk %}" style="text-decoration: none;"> {{article}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

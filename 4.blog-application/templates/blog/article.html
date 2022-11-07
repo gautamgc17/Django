@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+    <h2> Article Name: {{article.title}} </article></h2>
+    <h4> Created At: {{article.createdAt}} </h4>
+    <p> Description: {{article.content}} </p>
+    <!-- Relational manager object -->
+    <!-- No function call in parenthesis -->
+    <h5> List of Authors: 
+        {% for author in article.authors.all %}
+            <a href="{% url 'get-author' author.id %}" style="text-decoration: none;"> {{ author.name }} </a>,
+        {% endfor %}
+    </h5>
+{% endblock %} 
