@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> English Dictionary </title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align"> English Dictionary </h1>
+    </div>
+    <div class="container">
+        <form action="{% url 'search-word' %}" method="get" id="my-form">
+            <input type="text" name="search" placeholder="Enter word here">
+            <button class="btn waves-effect waves-light" type="submit">Search
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+    <br>
+    <div class="container">
+        {% if meaningN %}
+        <h6 class="">
+            Meaning: {{meaningN}}
+        </h6>
+        {% endif %}
+
+        {% if synonyms %}
+        <h6 class="">
+            Synonyms: {% for synonym in synonyms %}
+                {{synonym}}, 
+            {% endfor %}
+        </h6>
+        {% else %}
+        <h6 class="">
+            Synonyms: No Synonyms Found
+        </h6>
+        {% endif %}
+
+        {% if antonyms %}
+        <h6 class="">
+            Antonyms: {% for antonym in antonyms %}
+                {{antonym}}, 
+            {% endfor %}
+        </h6>
+        {% else %}
+        <h6 class="">
+            Antonyms: No Antonyms Found
+        </h6>
+        {% endif %}
+    </div>
+</body>
+</html>
